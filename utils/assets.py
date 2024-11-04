@@ -1,5 +1,7 @@
 from pathlib import Path
 
+from sympy import E
+
 
 class Assets(object):
     '''
@@ -10,7 +12,8 @@ class Assets(object):
     PLAYER_FRENTE: Path = Path("assets/images/player/dragon/mover_frente")
     PLAYER_ESPALDA: Path = Path("assets/images/player/dragon/mover_espalda")
     PLAYER_DERECHA: Path = Path("assets/images/player/dragon/mover_derecha")
-    PLAYER_IZQUIERDA: Path = Path( "assets/images/player/dragon/mover_izquierda")
+    PLAYER_IZQUIERDA: Path = Path(
+        "assets/images/player/dragon/mover_izquierda")
 
     # * Personaje
 
@@ -35,21 +38,31 @@ class Assets(object):
     PERSONAJE_DERECHA_5: Path = Path(f"{PLAYER_DERECHA}/dragon_derecha2_1.png")
     PERSONAJE_DERECHA_6: Path = Path(f"{PLAYER_DERECHA}/dragon_derecha3_1.png")
 
-    PERSONAJE_IZQUIERDA_1: Path = Path( f"{PLAYER_IZQUIERDA}/dragon_izquierda1.png")
-    PERSONAJE_IZQUIERDA_2: Path = Path( f"{PLAYER_IZQUIERDA}/dragon_izquierda2.png")
-    PERSONAJE_IZQUIERDA_3: Path = Path( f"{PLAYER_IZQUIERDA}/dragon_izquierda3.png")
-    PERSONAJE_IZQUIERDA_4: Path = Path( f"{PLAYER_IZQUIERDA}/dragon_izquierda1_1.png")
-    PERSONAJE_IZQUIERDA_5: Path = Path( f"{PLAYER_IZQUIERDA}/dragon_izquierda2_1.png")
-    PERSONAJE_IZQUIERDA_6: Path = Path(f"{PLAYER_IZQUIERDA}/dragon_izquierda3_1.png")
+    PERSONAJE_IZQUIERDA_1: Path = Path(
+        f"{PLAYER_IZQUIERDA}/dragon_izquierda1.png")
+    PERSONAJE_IZQUIERDA_2: Path = Path(
+        f"{PLAYER_IZQUIERDA}/dragon_izquierda2.png")
+    PERSONAJE_IZQUIERDA_3: Path = Path(
+        f"{PLAYER_IZQUIERDA}/dragon_izquierda3.png")
+    PERSONAJE_IZQUIERDA_4: Path = Path(
+        f"{PLAYER_IZQUIERDA}/dragon_izquierda1_1.png")
+    PERSONAJE_IZQUIERDA_5: Path = Path(
+        f"{PLAYER_IZQUIERDA}/dragon_izquierda2_1.png")
+    PERSONAJE_IZQUIERDA_6: Path = Path(
+        f"{PLAYER_IZQUIERDA}/dragon_izquierda3_1.png")
 
     # Y asi dependiendo de cuan larga sea la animacion
 
-    # * Enemigos caballero
+    # * Enemigo caballero 1 Barrer
     ENEMIGO_FRENTE: Path = Path("assets/images/enemy/caballero/caminar_frente")
-    ENEMIGO_ESPALDA: Path = Path("assets/images/enemy/caballero/caminar_espalda")
-    ENEMIGO_DER: Path = Path("assets/images/enemy/caballero/caminar_direccion_derecha")
-    ENEMIGO_IZQ: Path = Path("assets/images/enemy/caballero/caminar_direccion_izquierda")
+    ENEMIGO_ESPALDA: Path = Path(
+        "assets/images/enemy/caballero/caminar_espalda")
+    ENEMIGO_DER: Path = Path(
+        "assets/images/enemy/caballero/caminar_direccion_derecha")
+    ENEMIGO_IZQ: Path = Path(
+        "assets/images/enemy/caballero/caminar_direccion_izquierda")
 
+    # * Enemigos caballero
     ENEMIGO_FRENTE_1: Path = Path(f"{ENEMIGO_FRENTE}/caminar_frente1.png")
     ENEMIGO_FRENTE_2: Path = Path(f"{ENEMIGO_FRENTE}/caminar_frente2.png")
     ENEMIGO_FRENTE_3: Path = Path(f"{ENEMIGO_FRENTE}/caminar_frente3.png")
@@ -57,11 +70,11 @@ class Assets(object):
     ENEMIGO_FRENTE_5: Path = Path(f"{ENEMIGO_FRENTE}/caminar_frente5.png")
     ENEMIGO_FRENTE_6: Path = Path(f"{ENEMIGO_FRENTE}/caminar_frente6.png")
 
-    ENEMIGO_ATRAS_1: Path = Path(f"{ENEMIGO_ESPALDA}/caminar_espalda.png")
-    ENEMIGO_ATRAS_2: Path = Path(f"{ENEMIGO_ESPALDA}/caminar_espalda1.png")
-    ENEMIGO_ATRAS_3: Path = Path(f"{ENEMIGO_ESPALDA}/caminar_espalda2.png")
-    ENEMIGO_ATRAS_4: Path = Path(f"{ENEMIGO_ESPALDA}/caminar-espalda3.png")
-    ENEMIGO_ATRAS_5: Path = Path( f"{ENEMIGO_ESPALDA}/caminar_espalda5.png")
+    ENEMIGO_ATRAS_1: Path = Path(f"{ENEMIGO_ESPALDA}/caminar_espalda1.png")
+    ENEMIGO_ATRAS_2: Path = Path(f"{ENEMIGO_ESPALDA}/caminar_espalda2.png")
+    ENEMIGO_ATRAS_3: Path = Path(f"{ENEMIGO_ESPALDA}/caminar_espalda3.png")
+    ENEMIGO_ATRAS_4: Path = Path(f"{ENEMIGO_ESPALDA}/caminar_espalda4.png")
+    ENEMIGO_ATRAS_5: Path = Path(f"{ENEMIGO_ESPALDA}/caminar_espalda5.png")
     ENEMIGO_ATRAS_6: Path = Path(f"{ENEMIGO_ESPALDA}/caminar_espalda6.png")
 
     ENEMIGO_DERECHA_1: Path = Path(f"{ENEMIGO_DER}/caminar_der1.png")
@@ -78,45 +91,90 @@ class Assets(object):
     ENEMIGO_IZQUIERDA_5: Path = Path(f"{ENEMIGO_IZQ}/caminar_izq5.png")
     ENEMIGO_IZQUIERDA_6: Path = Path(f"{ENEMIGO_IZQ}/caminar_izq6.png")
 
-    # * Enemigo caballero
-    ENEMIGO_FRENTE: Path = Path("assets/images/enemy/enemigo_2/caminar_frente")
-    ENEMIGO_ESPALDA: Path = Path("assets/images/enemy/enemigo_2/caminar_espalda")
-    ENEMIGO_DERECHA: Path = Path( "assets/images/enemy/enemigo_2/caminar_derecha")
-    ENEMIGO_IZQUIERDA: Path = Path("assets/images/enemy/enemigo_2/caminar_izquierda")
+    # * Enemigo caballero 2 Barrer
+    ENEMIGO2_FRENTE: Path = Path(
+        "assets/images/enemy/enemigo_2/caminar_frente")
+    ENEMIGO2_ESPALDA: Path = Path(
+        "assets/images/enemy/enemigo_2/caminar_espalda")
+    ENEMIGO2_DERECHA: Path = Path(
+        "assets/images/enemy/enemigo_2/caminar_derecha")
+    ENEMIGO2_IZQUIERDA: Path = Path(
+        "assets/images/enemy/enemigo_2/caminar_izquierda")
 
-    ENEMIGO_FRENTE_1: Path = Path(f"{ENEMIGO_FRENTE}/cab2_caminar_frente1.png")
-    ENEMIGO_FRENTE_2: Path = Path(f"{ENEMIGO_FRENTE}/cab2_caminar_frente2.png")
-    ENEMIGO_FRENTE_3: Path = Path(f"{ENEMIGO_FRENTE}/cab2_caminar_frente3.png")
-    ENEMIGO_FRENTE_4: Path = Path(f"{ENEMIGO_FRENTE}/cab2_caminar_frente4.png")
-    ENEMIGO_FRENTE_5: Path = Path(f"{ENEMIGO_FRENTE}/cab2_caminar_frente5.png")
-    ENEMIGO_FRENTE_6: Path = Path(f"{ENEMIGO_FRENTE}/cab2_caminar_frente6.png")
-    ENEMIGO_FRENTE_7: Path = Path(f"{ENEMIGO_FRENTE}/cab2_caminar_frente7.png")
-    ENEMIGO_FRENTE_8: Path = Path(f"{ENEMIGO_FRENTE}/cab2_caminar_frente8.png")
+    # * Enemigo caballero 2
+    ENEMIGO2_FRENTE_1: Path = Path(
+        f"{ENEMIGO2_FRENTE}/cab2_caminar_frente1.png")
+    ENEMIGO2_FRENTE_2: Path = Path(
+        f"{ENEMIGO2_FRENTE}/cab2_caminar_frente2.png")
+    ENEMIGO2_FRENTE_3: Path = Path(
+        f"{ENEMIGO2_FRENTE}/cab2_caminar_frente3.png")
+    ENEMIGO2_FRENTE_4: Path = Path(
+        f"{ENEMIGO2_FRENTE}/cab2_caminar_frente4.png")
+    ENEMIGO2_FRENTE_5: Path = Path(
+        f"{ENEMIGO2_FRENTE}/cab2_caminar_frente5.png")
+    ENEMIGO2_FRENTE_6: Path = Path(
+        f"{ENEMIGO2_FRENTE}/cab2_caminar_frente6.png")
+    ENEMIGO2_FRENTE_7: Path = Path(
+        f"{ENEMIGO2_FRENTE}/cab2_caminar_frente7.png")
+    ENEMIGO2_FRENTE_8: Path = Path(
+        f"{ENEMIGO2_FRENTE}/cab2_caminar_frente8.png")
 
-    ENEMIGO_ATRAS_1: Path = Path(f"{ENEMIGO_ESPALDA}/cab2_caminar_espalda1.png")
-    ENEMIGO_ATRAS_2: Path = Path(f"{ENEMIGO_ESPALDA}/cab2_caminar_espalda2.png")
-    ENEMIGO_ATRAS_3: Path = Path(f"{ENEMIGO_ESPALDA}/cab2_caminar_espalda3.png")
-    ENEMIGO_ATRAS_4: Path = Path(f"{ENEMIGO_ESPALDA}/cab2_caminar_espalda4.png")
-    ENEMIGO_ATRAS_5: Path = Path(f"{ENEMIGO_ESPALDA}/cab2_caminar_espalda5.png")
-    ENEMIGO_ATRAS_6: Path = Path(f"{ENEMIGO_ESPALDA}/cab2_caminar_espalda6.png")
-    ENEMIGO_ATRAS_7: Path = Path(f"{ENEMIGO_ESPALDA}/cab2_caminar_espalda7.png")
-    ENEMIGO_ATRAS_8: Path = Path(f"{ENEMIGO_ESPALDA}/cab2_caminar_espalda8.png")
+    ENEMIGO2_ATRAS_1: Path = Path(
+        f"{ENEMIGO2_ESPALDA}/cab2_caminar_espalda1.png")
+    ENEMIGO2_ATRAS_2: Path = Path(
+        f"{ENEMIGO2_ESPALDA}/cab2_caminar_espalda2.png")
+    ENEMIGO2_ATRAS_3: Path = Path(
+        f"{ENEMIGO2_ESPALDA}/cab2_caminar_espalda3.png")
+    ENEMIGO2_ATRAS_4: Path = Path(
+        f"{ENEMIGO2_ESPALDA}/cab2_caminar_espalda4.png")
+    ENEMIGO2_ATRAS_5: Path = Path(
+        f"{ENEMIGO2_ESPALDA}/cab2_caminar_espalda5.png")
+    ENEMIGO2_ATRAS_6: Path = Path(
+        f"{ENEMIGO2_ESPALDA}/cab2_caminar_espalda6.png")
+    ENEMIGO2_ATRAS_7: Path = Path(
+        f"{ENEMIGO2_ESPALDA}/cab2_caminar_espalda7.png")
+    ENEMIGO2_ATRAS_8: Path = Path(
+        f"{ENEMIGO2_ESPALDA}/cab2_caminar_espalda8.png")
 
-    ENEMIGO_DERECHA_1: Path = Path(f"{ENEMIGO_DERECHA}/cab2_caminar_der1.png")
-    ENEMIGO_DERECHA_2: Path = Path(f"{ENEMIGO_DERECHA}/cab2_caminar_der2.png")
-    ENEMIGO_DERECHA_3: Path = Path(f"{ENEMIGO_DERECHA}/cab2_caminar_der3.png")
-    ENEMIGO_DERECHA_4: Path = Path(f"{ENEMIGO_DERECHA}/cab2_caminar_der4.png")
-    ENEMIGO_DERECHA_5: Path = Path(f"{ENEMIGO_DERECHA}/cab2_caminar_der5.png")
-    ENEMIGO_DERECHA_6: Path = Path(f"{ENEMIGO_DERECHA}/cab2_caminar_der6.png")
-    ENEMIGO_DERECHA_7: Path = Path(f"{ENEMIGO_DERECHA}/cab2_caminar_der7.png")
-    ENEMIGO_DERECHA_8: Path = Path(f"{ENEMIGO_DERECHA}/cab2_caminar_der8.png")
+    ENEMIGO2_DERECHA_1: Path = Path(
+        f"{ENEMIGO2_DERECHA}/cab2_caminar_der1.png")
+    ENEMIGO2_DERECHA_2: Path = Path(
+        f"{ENEMIGO2_DERECHA}/cab2_caminar_der2.png")
+    ENEMIGO2_DERECHA_3: Path = Path(
+        f"{ENEMIGO2_DERECHA}/cab2_caminar_der3.png")
+    ENEMIGO2_DERECHA_4: Path = Path(
+        f"{ENEMIGO2_DERECHA}/cab2_caminar_der4.png")
+    ENEMIGO2_DERECHA_5: Path = Path(
+        f"{ENEMIGO2_DERECHA}/cab2_caminar_der5.png")
+    ENEMIGO2_DERECHA_6: Path = Path(
+        f"{ENEMIGO2_DERECHA}/cab2_caminar_der6.png")
+    ENEMIGO2_DERECHA_7: Path = Path(
+        f"{ENEMIGO2_DERECHA}/cab2_caminar_der7.png")
+    ENEMIGO2_DERECHA_8: Path = Path(
+        f"{ENEMIGO2_DERECHA}/cab2_caminar_der8.png")
 
-    ENEMIGO_IZQUIERDA_1: Path = Path(f"{ENEMIGO_IZQUIERDA}/cab2_caminar_izq1.png")
-    ENEMIGO_IZQUIERDA_2: Path = Path(f"{ENEMIGO_IZQUIERDA}/cab2_caminar_izq2.png")
-    ENEMIGO_IZQUIERDA_3: Path = Path(f"{ENEMIGO_IZQUIERDA}/cab2_caminar_izq3.png")
-    ENEMIGO_IZQUIERDA_4: Path = Path(f"{ENEMIGO_IZQUIERDA}/cab2_caminar_izq4.png")
-    ENEMIGO_IZQUIERDA_5: Path = Path(f"{ENEMIGO_IZQUIERDA}/cab2_caminar_izq5.png")
-    ENEMIGO_IZQUIERDA_6: Path = Path(f"{ENEMIGO_IZQUIERDA}/cab2_caminar_izq6.png")
+    ENEMIGO2_IZQUIERDA_1: Path = Path(
+        f"{ENEMIGO2_IZQUIERDA}/cab2_caminar_izq1.png")
+    ENEMIGO2_IZQUIERDA_2: Path = Path(
+        f"{ENEMIGO2_IZQUIERDA}/cab2_caminar_izq2.png")
+    ENEMIGO2_IZQUIERDA_3: Path = Path(
+        f"{ENEMIGO2_IZQUIERDA}/cab2_caminar_izq3.png")
+    ENEMIGO2_IZQUIERDA_4: Path = Path(
+        f"{ENEMIGO2_IZQUIERDA}/cab2_caminar_izq4.png")
+    ENEMIGO2_IZQUIERDA_5: Path = Path(
+        f"{ENEMIGO2_IZQUIERDA}/cab2_caminar_izq5.png")
+    ENEMIGO2_IZQUIERDA_6: Path = Path(
+        f"{ENEMIGO2_IZQUIERDA}/cab2_caminar_izq6.png")
+
+    """
+        #Future  Animacion
+    
+        ENEMIGO2_IZQUIERDA_7: Path = Path(
+        f"{ENEMIGO2_IZQUIERDA}/cab2_caminar_izq7.png")
+    ENEMIGO2_IZQUIERDA_8: Path = Path(
+        f"{ENEMIGO2_IZQUIERDA}/cab2_caminar_izq8.png")
+    
+    """
 
     # * Bloques
 
@@ -128,11 +186,14 @@ class Assets(object):
     # * Fondo Mapa
     FONDO_MAPA: Path = Path("assets/images/background/fondo_imagen.png")
 
+    # * Fondo Menu
+    FONDO_MENU: Path = Path("assets/images/pantalla_inicio/inicio.png")
+
     # * Bomba
 
     BOMBA: Path = Path("assets/images/bomb")
 
-    BOMBA: Path = Path(f"{BOMBA}/fire_principal.png")
+    BOMBA_ANIMACION: Path = Path(f"{BOMBA}/fire_principal.png")
 
     EXPLOSION: Path = Path("assets/images/bomb")
 
@@ -147,5 +208,3 @@ class Assets(object):
     # * fin juego
 
     FIN_JUEGO: Path = Path("assets/images/fin de juego/fin_juego.png")
-
-    FIN_JUEGO: Path = Path(f"{FIN_JUEGO}/fin_juego.png")

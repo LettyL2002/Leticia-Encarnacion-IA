@@ -16,6 +16,6 @@ class STRINGS (object):
 
     # Texto del menu
 
-    MENU_OPCIONES = ["Iniciar", "Salir", "Créditos"]
+    MENU_OPCIONES = ["Iniciar", "Créditos", "Salir",]
 
     # ? Aca se irán agregando según se vayan necesitando strings para la interfaz del juego
