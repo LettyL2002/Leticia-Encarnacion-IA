@@ -1,5 +1,7 @@
 import pygame
 import sys
+from pathlib import Path
+from scenes.creditos import credits_screen
 from utils.constants import Constants
 from utils.assets import Assets
 from scenes.game import Game
@@ -15,12 +17,17 @@ pygame.font.init()
 font = Constants.FUENTE_PRINCIPAL_MENU
 small_font = Constants.FUENTE_PEQUENA_MENU
 
+# Load and scale background image
+background_image = pygame.image.load(Assets.FONDO_MENU)
+background_image = pygame.transform.scale(
+    background_image, (Constants.ANCHO_MENU, Constants.ALTO_MENU))
+
 # OPTIONS
 selected_option = 0
 
 
 def draw_menu():
-    screen.fill(Constants.BLACK)
+    screen.blit(background_image, (0, 0))  # Draw the background image
     title_text = font.render("Bomberman", True, Constants.WHITE)
     screen.blit(title_text, (Constants.ANCHO_MENU // 2 -
                 title_text.get_width() // 2, 100))
@@ -61,7 +68,7 @@ def handle_selection():
         game = Game(screen)
         game.run()
     elif selected_option == 1:
-        print("Options selected")
+        credits_screen()
     elif selected_option == 2:
         pygame.quit()
         sys.exit()
