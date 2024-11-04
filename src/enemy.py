@@ -5,8 +5,6 @@ from astar import AStar
 from bomb import Bomb
 from nodo import Accion, Secuencia, Selector, Timer
 
-# Estados del enemigo
-
 
 class EnemyState(Enum):
     PATROL = 1
@@ -16,19 +14,26 @@ class EnemyState(Enum):
 
 
 class Enemy:
-    def __init__(self, x, y, game_map, patrol_points=None, tile_size=50):
+    def __init__(self, x, y, game_map, patrol_points=None, tile_size=30):
         # Atributos básicos
-        self.x = x
-        self.y = y
+        self.grid_x = x // tile_size
+        self.grid_y = y // tile_size
+        self.x = self.grid_x * tile_size
+        self.y = self.grid_y * tile_size
         self.map = game_map
         self.tile_size = tile_size
-        self.speed = 3
+        self.is_moving = False
+        self.target_x = self.x
+        self.target_y = self.y
         self.state = EnemyState.PATROL
-        self.detection_range = 5  # En tiles
+        self.detection_range = 5
         self.path = []
         self.current_patrol_point = 0
         self.target = None
         self.pathfinder = AStar(game_map)
+        self.move_cooldown = 0
+        # Ajusta este valor para controlar la velocidad (frames entre movimientos)
+        self.move_delay = 15
 
         # Puntos de patrulla
         self.patrol_points = patrol_points or [
@@ -39,8 +44,8 @@ class Enemy:
         ]
 
         # Configuración visual
-        self.image = pygame.Surface((tile_size-10, tile_size-10))
-        self.image.fill((255, 0, 0))  # Color rojo para el enemigo
+        self.image = pygame.Surface((tile_size-6, tile_size-6))
+        self.image.fill((255, 0, 0))
         self.rect = self.image.get_rect()
         self.update_rect_position()
 
@@ -63,7 +68,7 @@ class Enemy:
         # Secuencia de ataque
         esta_en_rango_ataque = Accion(self.is_in_attack_range)
         atacar = Accion(self.attack)
-        timer_ataque = Timer(60)  # 1 segundo entre ataques
+        timer_ataque = Timer(60)
         timer_ataque.agregar_hijo(atacar)
         secuencia_ataque.agregar_hijo(esta_en_rango_ataque)
         secuencia_ataque.agregar_hijo(timer_ataque)
@@ -83,18 +88,16 @@ class Enemy:
         secuencia_patrulla.agregar_hijo(mover_patrulla)
 
     def update_rect_position(self):
-        self.rect.x = self.x
-        self.rect.y = self.y
+        self.rect.x = self.x + 3
+        self.rect.y = self.y + 3
 
     def detect_player(self):
         if self.target is None:
             return False
 
         player_pos = self.target.get_position_for_astar()
-        enemy_pos = (self.x // self.tile_size, self.y // self.tile_size)
-
-        distance = math.sqrt((player_pos[0] - enemy_pos[0])**2 +
-                             (player_pos[1] - enemy_pos[1])**2)
+        distance = math.sqrt((player_pos[0] - self.grid_x)**2 +
+                             (player_pos[1] - self.grid_y)**2)
 
         if distance <= self.detection_range:
             self.state = EnemyState.CHASE
@@ -105,14 +108,14 @@ class Enemy:
         if self.target is None:
             return False
 
-        start = (self.x // self.tile_size, self.y // self.tile_size)
+        start = (self.grid_x, self.grid_y)
         goal = self.target.get_position_for_astar()
 
         self.path = self.pathfinder.find_path(start, goal)
         return len(self.path) > 0
 
     def update_patrol_path(self):
-        start = (self.x // self.tile_size, self.y // self.tile_size)
+        start = (self.grid_x, self.grid_y)
         goal = self.patrol_points[self.current_patrol_point]
 
         if start == goal:
@@ -124,49 +127,52 @@ class Enemy:
         return True
 
     def move_along_path(self):
-        if not self.path:
+        if not self.path or len(self.path) < 2:
             return False
 
-        next_pos = self.path[1] if len(self.path) > 1 else self.path[0]
+        # Control de velocidad de movimiento
+        if self.move_cooldown > 0:
+            self.move_cooldown -= 1
+            return True
+
+        # Obtener siguiente posición en el camino
+        next_pos = self.path[1]
         target_x = next_pos[0] * self.tile_size
         target_y = next_pos[1] * self.tile_size
 
-        dx = target_x - self.x
-        dy = target_y - self.y
+        # Verificar si podemos movernos a la siguiente posición
+        temp_rect = pygame.Rect(target_x + 3, target_y + 3,
+                                self.rect.width, self.rect.height)
 
-        distance = math.sqrt(dx**2 + dy**2)
-
-        if distance < self.speed:
+        if not self.map.get_colliding_blocks(temp_rect):
+            # Actualizar posición
             self.x = target_x
             self.y = target_y
+            self.grid_x = next_pos[0]
+            self.grid_y = next_pos[1]
             self.path.pop(0)
-        else:
-            self.x += (dx/distance) * self.speed
-            self.y += (dy/distance) * self.speed
+            self.update_rect_position()
+            self.move_cooldown = self.move_delay
+            return True
 
-        self.update_rect_position()
-        return True
+        # Si hay colisión, recalcular ruta
+        self.path = []
+        return False
 
     def is_in_attack_range(self):
         if self.target is None:
             return False
 
         player_pos = self.target.get_position_for_astar()
-        enemy_pos = (self.x // self.tile_size, self.y // self.tile_size)
-
-        return math.sqrt((player_pos[0] - enemy_pos[0])**2 +
-                         (player_pos[1] - enemy_pos[1])**2) <= 1.5
+        return math.sqrt((player_pos[0] - self.grid_x)**2 +
+                         (player_pos[1] - self.grid_y)**2) <= 1.5
 
     def attack(self):
         if self.target is None:
             return False
 
         # Plantar una bomba
-        grid_x = self.x // self.tile_size
-        grid_y = self.y // self.tile_size
-        bomb = Bomb(grid_x, grid_y, self.tile_size)
-
-        # FUTURE Agregar la bomba a una lista de bombas activas en el juego
+        bomb = Bomb(self.grid_x, self.grid_y, self.tile_size)
         return True
 
     def set_target(self, player):

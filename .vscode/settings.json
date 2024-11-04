@@ -10,10 +10,12 @@
     "accion",
     "Accion",
     "astar",
+    "colliderect",
     "danado",
     "keydown",
     "KEYDOWN",
     "PEQUENA",
-    "persecucion"
+    "persecucion",
+    "tuplas"
   ]
 }

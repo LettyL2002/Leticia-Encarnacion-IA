@@ -12,12 +12,14 @@ class AStar:
         x, y = pos
         directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
         neighbors = []
+
         for dx, dy in directions:
             new_x, new_y = x + dx, y + dy
             if (0 <= new_x < self.map.grid_width and
                 0 <= new_y < self.map.grid_height and
                     self.map.is_walkable(new_x, new_y)):
                 neighbors.append((new_x, new_y))
+
         return neighbors
 
     def find_path(self, start, goal):

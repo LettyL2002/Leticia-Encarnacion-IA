@@ -15,14 +15,25 @@ class Game:
         # Crear el mapa
         self.map = Map()
 
-        # Crear jugador (posición inicial)
-        self.player = Player(Constants.TILE_SIZE,
-                             Constants.TILE_SIZE, self.map)
+        # Buscar primera pos valida
+        grid_x = 0
+        grid_y = 0
+        while not self.map.is_walkable(grid_x, grid_y):
+            grid_x += 1
+        if grid_x >= self.map.grid_width:
+            grid_x = 0
+            grid_y += 1
 
-        # Crear enemigo
-        enemy_x = (self.map.grid_width - 2) * Constants.TILE_SIZE
-        enemy_y = (self.map.grid_height - 2) * Constants.TILE_SIZE
-        self.enemy = Enemy(enemy_x, enemy_y, self.map)
+        # Crear jugador en posición valida
+        self.player = Player(grid_x * Constants.TILE_SIZE,
+                             grid_y * Constants.TILE_SIZE,
+                             self.map)
+
+        # Crear enemigo en una posición válida
+        spawn_x, spawn_y = self.map.find_valid_spawn_position()
+        self.enemy = Enemy(spawn_x * Constants.TILE_SIZE,
+                           spawn_y * Constants.TILE_SIZE,
+                           self.map)
         self.enemy.set_target(self.player)
 
         # Lista de bombas activas
@@ -35,6 +46,11 @@ class Game:
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     self.running = False
+
+        # Procesar las teclas presionadas continuamente
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_LEFT] or keys[pygame.K_RIGHT] or keys[pygame.K_UP] or keys[pygame.K_DOWN]:
+            self.player.move()
 
     def update(self):
         self.player.update()
