@@ -7,40 +7,47 @@ class Assets(object):
     '''
 
     # * Barrel
-    PLAYER_FRENTE = "assets/images/player/dragon/mover_frente/"
-    PLAYER_ESPALDA = "assets/images/player/dragon/mover_espalda/"
-    PLAYER_DERECHA = "assets/images/player/dragon/mover_derecha/"
-    PLAYER_IZQUIERDA = "assets/images/player/dragon/mover_izquierda/"
+    PLAYER_FRENTE: Path = Path("assets/images/player/dragon/mover_frente")
+    PLAYER_ESPALDA: Path = Path("assets/images/player/dragon/mover_espalda")
+    PLAYER_DERECHA: Path = Path("assets/images/player/dragon/mover_derecha")
+    PLAYER_IZQUIERDA: Path = Path(
+        "assets/images/player/dragon/mover_izquierda")
 
     # * Personaje
 
-    PERSONAJE_FRENTE_1 = f"{PLAYER_FRENTE}dragon_frente1.png"
-    PERSONAJE_FRENTE_2 = f"{PLAYER_FRENTE}dragon_frente1.1.png"
-    PERSONAJE_FRENTE_3 = f"{PLAYER_FRENTE}dragon_frente2.png"
-    PERSONAJE_FRENTE_4 = f"{PLAYER_FRENTE}dragon_frente2.1.png"
-    PERSONAJE_FRENTE_5 = f"{PLAYER_FRENTE}dragon_frente3.png"
-    PERSONAJE_FRENTE_6 = f"{PLAYER_FRENTE}dragon_frente3.1.png"
+    PERSONAJE_FRENTE_1: Path = Path(f"{PLAYER_FRENTE}/dragon_frente1.png")
+    PERSONAJE_FRENTE_2: Path = Path(f"{PLAYER_FRENTE}/dragon_frente1_1.png")
+    PERSONAJE_FRENTE_3: Path = Path(f"{PLAYER_FRENTE}/dragon_frente2.png")
+    PERSONAJE_FRENTE_4: Path = Path(f"{PLAYER_FRENTE}/dragon_frente2_1.png")
+    PERSONAJE_FRENTE_5: Path = Path(f"{PLAYER_FRENTE}/dragon_frente3.png")
+    PERSONAJE_FRENTE_6: Path = Path(f"{PLAYER_FRENTE}/dragon_frente3_1.png")
 
-    PERSONAJE_ATRAS_1 = f"{PLAYER_ESPALDA}dragon_espalda1.png"
-    PERSONAJE_ATRAS_2 = f"{PLAYER_ESPALDA}dragon_espalda2.png"
-    PERSONAJE_ATRAS_3 = f"{PLAYER_ESPALDA}dragon_espalda3.png"
-    PERSONAJE_ATRAS_4 = f"{PLAYER_ESPALDA}dragon_espalda1.1.png"
-    PERSONAJE_ATRAS_5 = f"{PLAYER_ESPALDA}dragon_espalda2.1.png"
-    PERSONAJE_ATRAS_6 = f"{PLAYER_ESPALDA}dragon_espalda3.1.png"
+    PERSONAJE_ATRAS_1: Path = Path(f"{PLAYER_ESPALDA}/dragon_espalda1.png")
+    PERSONAJE_ATRAS_2: Path = Path(f"{PLAYER_ESPALDA}/dragon_espalda2.png")
+    PERSONAJE_ATRAS_3: Path = Path(f"{PLAYER_ESPALDA}/dragon_espalda3.png")
+    PERSONAJE_ATRAS_4: Path = Path(f"{PLAYER_ESPALDA}/dragon_espalda1_1.png")
+    PERSONAJE_ATRAS_5: Path = Path(f"{PLAYER_ESPALDA}/dragon_espalda2_1.png")
+    PERSONAJE_ATRAS_6: Path = Path(f"{PLAYER_ESPALDA}/dragon_espalda3_1.png")
 
-    PERSONAJE_DERECHA_1 = f"{PLAYER_DERECHA}dragon_derecha1.png"
-    PERSONAJE_DERECHA_2 = f"{PLAYER_DERECHA}dragon_derecha2.png"
-    PERSONAJE_DERECHA_3 = f"{PLAYER_DERECHA}dragon_derecha3.png"
-    PERSONAJE_DERECHA_4 = f"{PLAYER_DERECHA}dragon_derecha1.1.png"
-    PERSONAJE_DERECHA_5 = f"{PLAYER_DERECHA}dragon_derecha2.1png"
-    PERSONAJE_DERECHA_6 = f"{PLAYER_DERECHA}dragon_derecha3.1png"
+    PERSONAJE_DERECHA_1: Path = Path(f"{PLAYER_DERECHA}/dragon_derecha1.png")
+    PERSONAJE_DERECHA_2: Path = Path(f"{PLAYER_DERECHA}/dragon_derecha2.png")
+    PERSONAJE_DERECHA_3: Path = Path(f"{PLAYER_DERECHA}/dragon_derecha3.png")
+    PERSONAJE_DERECHA_4: Path = Path(f"{PLAYER_DERECHA}/dragon_derecha1_1.png")
+    PERSONAJE_DERECHA_5: Path = Path(f"{PLAYER_DERECHA}/dragon_derecha2_1.png")
+    PERSONAJE_DERECHA_6: Path = Path(f"{PLAYER_DERECHA}/dragon_derecha3_1.png")
 
-    PERSONAJE_IZQUIERDA_1 = f"{PLAYER_IZQUIERDA}dragon_izquierda1.png"
-    PERSONAJE_IZQUIERDA_2 = f"{PLAYER_IZQUIERDA}dragon_izquierda2.png"
-    PERSONAJE_IZQUIERDA_3 = f"{PLAYER_IZQUIERDA}dragon_izquierda3.png"
-    PERSONAJE_IZQUIERDA_4 = f"{PLAYER_IZQUIERDA}dragon_izquierda1.1.png"
-    PERSONAJE_IZQUIERDA_5 = f"{PLAYER_IZQUIERDA}dragon_izquierda2.1.png"
-    PERSONAJE_IZQUIERDA_6 = f"{PLAYER_IZQUIERDA}dragon_izquierda3.1.png"
+    PERSONAJE_IZQUIERDA_1: Path = Path(
+        f"{PLAYER_IZQUIERDA}/dragon_izquierda1.png")
+    PERSONAJE_IZQUIERDA_2: Path = Path(
+        f"{PLAYER_IZQUIERDA}/dragon_izquierda2.png")
+    PERSONAJE_IZQUIERDA_3: Path = Path(
+        f"{PLAYER_IZQUIERDA}/dragon_izquierda3.png")
+    PERSONAJE_IZQUIERDA_4: Path = Path(
+        f"{PLAYER_IZQUIERDA}/dragon_izquierda1_1.png")
+    PERSONAJE_IZQUIERDA_5: Path = Path(
+        f"{PLAYER_IZQUIERDA}/dragon_izquierda2_1.png")
+    PERSONAJE_IZQUIERDA_6: Path = Path(
+        f"{PLAYER_IZQUIERDA}/dragon_izquierda3_1.png")
 
     # Y asi dependiendo de cuan larga sea la animacion
 

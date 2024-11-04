@@ -1,6 +1,6 @@
 class Nodo:
-    def __init__(self):
-        self.hijos = []
+    def __init__(self, hijos=None):
+        self.hijos = hijos if hijos is not None else []
 
     def agregar_hijo(self, hijo):
         self.hijos.append(hijo)
@@ -46,4 +46,4 @@ class Timer(Nodo):
             return False
         else:
             self.tiempo_restante = self.tiempo
-            return self.hijos[0].ejecutar()
+            return True if not self.hijos else self.hijos[0].ejecutar()
