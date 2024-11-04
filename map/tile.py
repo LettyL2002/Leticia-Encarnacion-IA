@@ -1,9 +1,11 @@
 import pygame
-from constants import Constants  # Asegúrate de importar Constants
+from utils.constants import Constants
+from utils.assets import Assets
+from pathlib import Path
 
 
 class Block(pygame.sprite.Sprite):
-    def __init__(self, x, y, block_type):
+    def __init__(self, x: int, y: int, block_type: str) -> None:
         super().__init__()
         self.block_type = block_type
 
@@ -12,8 +14,8 @@ class Block(pygame.sprite.Sprite):
         self.grid_y = y
 
         # Cargar la imagen según el tipo
-        image_path = "bloque_piedra.png" if block_type == "piedra" else "Caja_madera.png"
-        self.image = pygame.image.load(image_path)
+        image_path: Path = Assets.TILE_PIEDRA if block_type == "piedra" else Assets.TILE_MADERA
+        self.image = pygame.image.load(Path(image_path))
         # Usar el tile_size de la constante
         self.image = pygame.transform.scale(
             self.image, (Constants.TILE_SIZE, Constants.TILE_SIZE))

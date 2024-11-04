@@ -1,42 +1,4 @@
-import pygame as pg
-
-
-class Constants (object):
-    '''
-    Todas las constantes utilizadas en el juego
-    '''
-
-    # * Pantalla Menu Principal
-    ANCHO_MENU = 800
-    ALTO_MENU = 600
-
-    # *  Colores ---> Hexadecimales | RGB
-    FONDO = '#000000'  # Sujeto a cambios
-    COLOR_PRINCIPAL = '#FFFFFF'  # Sujeto a cambios
-    COLOR_SECUNDARIO = '#000000'  # Sujeto a cambios
-    COLOR_ACCENTO = '#FF0000'  # Sujeto a cambios
-
-    # future COLORES RGB -- > #? Agrega mas colores si es necesario
-    WHITE = (255, 255, 255)
-    BLACK = (0, 0, 0)
-
-    # *  Bloques colores
-    BLOQUE_NORMAL = '#FFFFFF'  # Sujeto a cambios
-    BLOQUE_INDESTRUCTIBLE = '#000000'  # Sujeto a cambios
-    BLOQUE_POR_DESTRUIR = '#FF0000'  # Sujeto a cambios
-
-    # * Fuentes
-    pg.font.init()
-    FUENTE_PRINCIPAL_MENU = pg.font.Font(None, 74)
-    FUENTE_SECUNDARIA = ""
-    FUENTE_PEQUENA_MENU = pg.font.Font(None, 36)
-
-    # *  Bloques
-    TILE_SIZE = 30  # Tamaño de cada bloque en la grilla
-    GRID_WIDTH = 16  # Número de bloques en horizontal
-    GRID_HEIGHT = 12  # Número de bloques en vertical
-    WINDOW_WIDTH = GRID_WIDTH * TILE_SIZE
-    WINDOW_HEIGHT = GRID_HEIGHT * TILE_SIZE
+from pathlib import Path
 
 
 class Assets(object):
@@ -158,31 +120,32 @@ class Assets(object):
 
     # * Bloques
 
-    TILE_MADERA = "\\assets\\images\\bloque_madera\\Caja_madera.png"
-    TILE_PIEDRA = "\\assets\\images\\bloque_piedra\\bloque_piedra.png"
+    TILE_MADERA: Path = Path(
+        "assets/images/bloque_madera/Caja_madera.png")
+    TILE_PIEDRA: Path = Path(
+        "assets/images/bloque_piedra/bloque_piedra.png")
 
     # * Fondo Mapa
-    FONDO_MAPA = "\\assets\\images\\background\\fondo.png"
+    FONDO_MAPA: Path = Path("assets/images/background/fondo_imagen.png")
 
- # * Bomba
+    # * Bomba
 
+    BOMBA = "assets/images/bomb/"
 
-BOMBA = "assets/images/bomb/"
+    BOMBA = f"{BOMBA}fire_principal.png"
 
-BOMBA = f"{BOMBA}fire_principal.png"
+    EXPLOSION = "assets/images/bomb/"
 
-EXPLOSION = "assets/images/bomb/"
+    EXPLOSION_1 = f"{EXPLOSION}fire2.png"
+    EXPLOSION_2 = f"{EXPLOSION}fire3.png"
+    EXPLOSION_3 = f"{EXPLOSION}fire4.png"
+    EXPLOSION_4 = f"{EXPLOSION}fire5.png"
+    EXPLOSION_5 = f"{EXPLOSION}fire6.png"
+    EXPLOSION_6 = f"{EXPLOSION}fire7.png"
+    EXPLOSION_7 = f"{EXPLOSION}fire8.png"
 
-EXPLOSION_1 = f"{EXPLOSION}fire2.png"
-EXPLOSION_2 = f"{EXPLOSION}fire3.png"
-EXPLOSION_3 = f"{EXPLOSION}fire4.png"
-EXPLOSION_4 = f"{EXPLOSION}fire5.png"
-EXPLOSION_5 = f"{EXPLOSION}fire6.png"
-EXPLOSION_6 = f"{EXPLOSION}fire7.png"
-EXPLOSION_7 = f"{EXPLOSION}fire8.png"
+    # * fin juego
 
-# * fin juego
+    FIN_JUEGO = "assets/images/fin de juego/fin_juego.png"
 
-FIN_JUEGO = "assets/images/fin de juego/fin_juego.png"
-
-FIN_JUEGO = f"{FIN_JUEGO}fin_juego.png"
+    FIN_JUEGO = f"{FIN_JUEGO}fin_juego.png"

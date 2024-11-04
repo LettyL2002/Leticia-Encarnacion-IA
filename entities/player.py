@@ -1,8 +1,8 @@
 import pygame
 import math
 from enum import Enum
-from bomb import Bomb
-from nodo import Selector, Secuencia, Accion, Timer
+from entities.bomb import Bomb
+from ai.nodo import Selector, Secuencia, Accion, Timer
 
 
 class PlayerState(Enum):

@@ -1,5 +1,5 @@
 import pygame
-from menu_scene import main_menu
+from scenes.menu_scene import main_menu
 
 
 def main():

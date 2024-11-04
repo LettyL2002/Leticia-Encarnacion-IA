@@ -1,9 +1,8 @@
 import pygame
-from config import CONFIG
-from constants import Constants
-from enemy import Enemy
-from map import Map
-from player import Player
+from utils.constants import Constants
+from entities.enemy import Enemy
+from map.map import Map
+from entities.player import Player
 
 
 class Game:

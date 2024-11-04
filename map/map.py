@@ -1,7 +1,9 @@
 # map.py
 import pygame
 import random
-from tile import Block
+from map.tile import Block
+from utils.assets import Assets
+from utils.constants import Constants
 
 
 class Map:
@@ -11,7 +13,7 @@ class Map:
             grid_height = Alto de la grilla
     """
 
-    def __init__(self, tile_size=30, grid_width=28, grid_height=20):
+    def __init__(self, tile_size=30, grid_width=Constants.GRID_WIDTH, grid_height=Constants.GRID_HEIGHT):
         # Configuración del mapa
         self.tile_size = tile_size
         self.grid_width = grid_width
@@ -32,8 +34,7 @@ class Map:
 
     def load_images(self):
         """Carga y escala todas las imágenes necesarias"""
-        FONDO = "fondo_imagen.png"
-        self.background = pygame.image.load(FONDO)
+        self.background = pygame.image.load(Assets.FONDO_MAPA)
         self.background = pygame.transform.scale(
             self.background, (self.width, self.height))
 
@@ -81,8 +82,6 @@ class Map:
             if sprite.rect.colliderect(rect):
                 colliding_blocks.append(sprite)
         return colliding_blocks
-
-    # En la clase Map, añade:
 
     def find_valid_spawn_position(self, occupied_positions=None):
         """

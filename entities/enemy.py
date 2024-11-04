@@ -1,9 +1,9 @@
 from enum import Enum
 import math
 import pygame
-from astar import AStar
-from bomb import Bomb
-from nodo import Accion, Secuencia, Selector, Timer
+from ai.astar import AStar
+from entities.bomb import Bomb
+from ai.nodo import Accion, Secuencia, Selector, Timer
 
 
 class EnemyState(Enum):

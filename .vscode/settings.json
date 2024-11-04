@@ -17,5 +17,6 @@
     "PEQUENA",
     "persecucion",
     "tuplas"
-  ]
+  ],
+  "python.analysis.autoImportCompletions": true
 }

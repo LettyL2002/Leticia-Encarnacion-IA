@@ -1,13 +1,13 @@
 import pygame
 import sys
-from config import CONFIG
-from constants import Constants, Assets
-from game import Game
-from strings import STRINGS
-from map import Map
+from utils.constants import Constants
+from utils.assets import Assets
+from scenes.game import Game
+from utils.strings import STRINGS
+from map.map import Map
 
 # Set up the display
-screen = pygame.display.set_mode((CONFIG.ANCHO, CONFIG.ALTO))
+screen = pygame.display.set_mode((Constants.ANCHO_MENU, Constants.ALTO_MENU))
 pygame.display.set_caption(STRINGS.TITLE_VENTANA)
 
 # Set up the fonts
@@ -22,7 +22,7 @@ selected_option = 0
 def draw_menu():
     screen.fill(Constants.BLACK)
     title_text = font.render("Bomberman", True, Constants.WHITE)
-    screen.blit(title_text, (CONFIG.ANCHO // 2 -
+    screen.blit(title_text, (Constants.ANCHO_MENU // 2 -
                 title_text.get_width() // 2, 100))
 
     for index, option in enumerate(STRINGS.MENU_OPCIONES):
@@ -30,7 +30,7 @@ def draw_menu():
             option_text = small_font.render(option, True, Constants.WHITE)
         else:
             option_text = small_font.render(option, True, (100, 100, 100))
-        screen.blit(option_text, (CONFIG.ANCHO // 2 -
+        screen.blit(option_text, (Constants.ANCHO_MENU // 2 -
                     option_text.get_width() // 2, 300 + index * 50))
 
     pygame.display.flip()
