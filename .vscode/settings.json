@@ -1,4 +1,19 @@
 {
-  "conventionalCommits.scopes": ["Project Structure", "Menu", "Dependencies"],
-  "cSpell.words": ["ACCENTO", "keydown", "KEYDOWN", "PEQUENA"]
+  "conventionalCommits.scopes": [
+    "Project Structure",
+    "Menu",
+    "Dependencies",
+    "Game"
+  ],
+  "cSpell.words": [
+    "ACCENTO",
+    "accion",
+    "Accion",
+    "astar",
+    "danado",
+    "keydown",
+    "KEYDOWN",
+    "PEQUENA",
+    "persecucion"
+  ]
 }

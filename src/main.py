@@ -1,6 +1,5 @@
 import pygame
-from config import CONFIG
-from scenes.menu_scene import main_menu
+from menu_scene import main_menu
 
 
 def main():

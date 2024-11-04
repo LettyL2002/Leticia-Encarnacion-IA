@@ -1,12 +1,10 @@
 import pygame
 import sys
-try:
-    from config import CONFIG
-    from utils.constants import Constants
-    from utils.strings import STRINGS
-except ImportError as e:
-    print(f"Error importing modules: {e}")
-    sys.exit(1)
+from config import CONFIG
+from constants import Constants, Assets
+from game import Game
+from strings import STRINGS
+from map import Map
 
 # Set up the display
 screen = pygame.display.set_mode((CONFIG.ANCHO, CONFIG.ALTO))
@@ -19,6 +17,7 @@ small_font = Constants.FUENTE_PEQUENA_MENU
 
 # OPTIONS
 selected_option = 0
+
 
 def draw_menu():
     screen.fill(Constants.BLACK)
@@ -59,15 +58,13 @@ def handle_keydown(key):
 
 def handle_selection():
     if selected_option == 0:
-        print("Start Game selected")
-        # Add code to start the game
+        game = Game(screen)
+        game.run()
     elif selected_option == 1:
         print("Options selected")
-        # Add code to show options
     elif selected_option == 2:
         pygame.quit()
         sys.exit()
-        # Add code to show options
 
 
 def main_menu():
