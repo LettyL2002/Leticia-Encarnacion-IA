@@ -18,6 +18,7 @@ font = pygame.font.Font(None, 36)
 
 # Credits text
 credits = [
+    "Dragon’s Bombardment\n",
     "Con el dolor de mi alma",
     "me puse a programar",
     "y este jueguito salió",
