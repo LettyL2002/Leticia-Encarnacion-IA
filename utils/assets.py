@@ -208,3 +208,14 @@ class Assets(object):
     # * fin juego
 
     FIN_JUEGO: Path = Path("assets/images/fin de juego/fin_juego.png")
+    
+    # * sonido
+    
+    MUSICA_FONDO:Path = Path ("assets/sound/music/fondo_completo.mp3")
+    MUSICA_TRANCISION:Path = Path ("assets/sound/effects/transición.mp3")
+    
+    SONIDO_PERSONAJE_RUGIDO:Path = Path ("assets/sound/effects/rugido_dragon.mp3")
+    SONIDO_PERSONAJE_ATAQUE:Path = Path ("assets/sound/effects/ataque_enemigo.mp3")
+    SONIDO_BOMBA:Path = Path ("assets/sound/effects/explosion_bomba.mp3")
+    SONIDO_BOTON:Path = Path ("assets/sound/effects/Botones.mp3")
+             

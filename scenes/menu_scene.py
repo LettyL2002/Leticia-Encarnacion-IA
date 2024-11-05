@@ -17,6 +17,10 @@ pygame.font.init()
 font = Constants.FUENTE_PRINCIPAL_MENU
 small_font = Constants.FUENTE_PEQUENA_MENU
 
+# sonido
+MUSICA= pygame.mixer.Sound(Assets.MUSICA_FONDO)
+
+
 # Load and scale background image
 background_image = pygame.image.load(Assets.FONDO_MENU)
 background_image = pygame.transform.scale(
