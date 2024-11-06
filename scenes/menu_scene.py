@@ -35,7 +35,7 @@ selected_option = 0
 
 def draw_menu():
     screen.blit(background_image, (0, 0))  # Draw the background image
-    title_text = font.render("Bomberman", True, Constants.WHITE)
+    title_text = font.render("Dragon’s Bombardment", True, Constants.WHITE)
     screen.blit(title_text, (Constants.ANCHO_MENU // 2 -
                 title_text.get_width() // 2, 100))
 
