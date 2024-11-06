@@ -227,7 +227,7 @@ class Assets(object):
 
     # * Musica
     # ! fondo_completo.mp3 (Archivo corrupto)
-    MUSICA_FONDO: Path = Path("assets/sound/music/fondo.mp3")
+    MUSICA_FONDO: Path = Path("assets/sound/music/song_fondo.mp3")
 
     # * Sonidos
     SONIDO_TRANCISION: Path = Path("assets/sound/effects/transición.wav")
@@ -238,7 +238,7 @@ class Assets(object):
 
     SONIDO_PERSONAJE_RUGIDO: Path = Path(
         "assets/sound/effects/rugido_dragon.wav")
-    SONIDO_PERSONAJE_ATAQUE: Path = Path(
+    SONIDO_ENEMIGO_ATAQUE: Path = Path(
         "assets/sound/effects/ataque_enemigo.wav")
     SONIDO_BOMBA: Path = Path("assets/sound/effects/explosion_bomba.wav")
     SONIDO_BOTON: Path = Path("assets/sound/effects/Botones.wav")
