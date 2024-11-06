@@ -1,3 +1,4 @@
+from re import S
 import pygame
 import sys
 from pathlib import Path
@@ -17,9 +18,10 @@ pygame.font.init()
 font = Constants.FUENTE_PRINCIPAL_MENU
 small_font = Constants.FUENTE_PEQUENA_MENU
 
-# sonido
-MUSICA= pygame.mixer.Sound(Assets.MUSICA_FONDO)
-MUSICA= pygame.mixer.Sound(Assets.SONIDO_BOTON)
+# sonido de fpndo
+pygame.mixer.music.load(Assets.MUSICA_FONDO)
+
+SONIDO_BOTTOM = pygame.mixer.Sound(Assets.SONIDO_BOTON)
 
 
 # Load and scale background image
@@ -62,8 +64,10 @@ def handle_keydown(key):
     global selected_option
     if key == pygame.K_UP:
         selected_option = (selected_option - 1) % len(STRINGS.MENU_OPCIONES)
+        SONIDO_BOTTOM.play()
     elif key == pygame.K_DOWN:
         selected_option = (selected_option + 1) % len(STRINGS.MENU_OPCIONES)
+        SONIDO_BOTTOM.play()
     elif key == pygame.K_RETURN:
         handle_selection()
 
@@ -81,5 +85,6 @@ def handle_selection():
 
 def main_menu():
     while True:
+        pygame.mixer.music.play(-1)
         handle_events()
         draw_menu()

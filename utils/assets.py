@@ -1,7 +1,5 @@
 from pathlib import Path
 
-from sympy import E
-
 
 class Assets(object):
     '''
@@ -208,14 +206,39 @@ class Assets(object):
     # * fin juego
 
     FIN_JUEGO: Path = Path("assets/images/fin de juego/fin_juego.png")
-    
-    # * sonido
-    
-    MUSICA_FONDO:Path = Path ("assets/sound/music/fondo_completo.mp3")
-    MUSICA_TRANCISION:Path = Path ("assets/sound/effects/transición.mp3")
-    
-    SONIDO_PERSONAJE_RUGIDO:Path = Path ("assets/sound/effects/rugido_dragon.mp3")
-    SONIDO_PERSONAJE_ATAQUE:Path = Path ("assets/sound/effects/ataque_enemigo.mp3")
-    SONIDO_BOMBA:Path = Path ("assets/sound/effects/explosion_bomba.mp3")
-    SONIDO_BOTON:Path = Path ("assets/sound/effects/Botones.mp3")
-             
+
+    """
+        #! Disclaimer:
+        #? Para los sonidos se recomienda usar archivos .WAV o .OGG
+
+        #?Para la música de fondo se recomienda usar archivos .MP3 
+
+        Para la Musica 
+            pygame.mixer.music.load(RUTA)
+            pygame.mixer.music.play(-1) # -1 para que se repita 
+            #? Lo ideal es usarlo en el bucle principal del juego
+
+
+        Para los efectos de sonido
+            var = pygame.mixer.Sound(RUTA)
+            var.play() #? para reproducir el sonido luego de X o Y accion
+
+    """
+
+    # * Musica
+    # ! fondo_completo.mp3 (Archivo corrupto)
+    MUSICA_FONDO: Path = Path("assets/sound/music/sound_long.mp3")
+
+    # * Sonidos
+    SONIDO_TRANCISION: Path = Path("assets/sound/effects/transición.wav")
+
+    """
+        A su definir cuales sonidos son del player y cuales osn del enemigo , ahi sonidos con variables que hacen referencia al player peor están asignados a la clase enemigo
+    """
+
+    SONIDO_PERSONAJE_RUGIDO: Path = Path(
+        "assets/sound/effects/rugido_dragon.wav")
+    SONIDO_PERSONAJE_ATAQUE: Path = Path(
+        "assets/sound/effects/ataque_enemigo.wav")
+    SONIDO_BOMBA: Path = Path("assets/sound/effects/explosion_bomba.wav")
+    SONIDO_BOTON: Path = Path("assets/sound/effects/Botones.wav")

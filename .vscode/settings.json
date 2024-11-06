@@ -23,6 +23,7 @@
     "persecucion",
     "recalcular",
     "SISN",
+    "TRANCISION",
     "tuplas"
   ],
   "python.analysis.autoImportCompletions": true

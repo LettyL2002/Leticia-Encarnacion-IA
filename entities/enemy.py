@@ -3,7 +3,7 @@ import math
 import pygame
 from ai.astar import AStar
 from entities.bomb import Bomb
-from ai.nodo import Accion, Secuencia, Selector, Timer 
+from ai.nodo import Accion, Secuencia, Selector, Timer
 from utils.assets import Assets
 
 
@@ -33,10 +33,10 @@ class Enemy:
         self.target = None
         self.pathfinder = AStar(game_map)
         self.move_cooldown = 0
-        self.attack_sound = pygame.mixer.Sound(Assets.SONIDO_PERSONAJE_ATAQUE)
+
         # Ajusta este valor para controlar la velocidad (frames entre movimientos)
         self.move_delay = 15
-        
+
         # Puntos de patrulla
         self.patrol_points = patrol_points or [
             (1, 1),

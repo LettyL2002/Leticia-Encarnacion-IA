@@ -50,10 +50,10 @@ class Player:
         self.animation_frame = 0
         self.animation_speed = 0.2
         self.animation_timer = 0
-        
+
         # sonido
-        
-        self.sound_player = pygame.mixer.Sound(Assets.SONIDO__PERSONAJE_RUGIDO)
+
+        self.sound_player = pygame.mixer.Sound(Assets.SONIDO_PERSONAJE_RUGIDO)
 
         # Cargar sprites
         self.sprites = self.load_sprites()

@@ -68,7 +68,8 @@ class Game:
 
         # Dibujar mapa
         self.map.draw(self.screen)
-        self.MUSICA= pygame.mixer.Sound(Assets.MUSICA_TRANCISION)
+        SONIDO_TRANCISION = pygame.mixer.Sound(Assets.SONIDO_TRANCISION)
+        SONIDO_TRANCISION.play()
 
         # Dibujar bombas
         for bomb in self.bombs:
