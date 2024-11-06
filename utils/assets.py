@@ -226,7 +226,6 @@ class Assets(object):
     """
 
     # * Musica
-    # ! fondo_completo.mp3 (Archivo corrupto)
     MUSICA_FONDO: Path = Path("assets/sound/music/song_fondo.mp3")
 
     # * Sonidos

@@ -18,7 +18,7 @@ pygame.font.init()
 font = Constants.FUENTE_PRINCIPAL_MENU
 small_font = Constants.FUENTE_PEQUENA_MENU
 
-# sonido de fpndo
+# sonido de fondo
 pygame.mixer.music.load(Assets.MUSICA_FONDO)
 
 SONIDO_BOTTOM = pygame.mixer.Sound(Assets.SONIDO_BOTON)
