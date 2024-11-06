@@ -1,4 +1,5 @@
 import pygame
+from utils.assets import Assets
 
 
 class Bomb:
@@ -8,6 +9,7 @@ class Bomb:
         self.tile_size = tile_size
         self.timer = 180  # 3 segundos a 60 FPS
         self.explosion_radius = 2
+        self.SONIDO= pygame.mixer.Sound(Assets.SONIDO_BOMBA)
         
         self.image = pygame.Surface((tile_size-10, tile_size-10))
         self.image.fill((0, 0, 0))

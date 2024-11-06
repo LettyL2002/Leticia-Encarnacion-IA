@@ -3,6 +3,7 @@ from utils.constants import Constants
 from entities.enemy import Enemy
 from map.map import Map
 from entities.player import Player
+from utils.assets import Assets
 
 
 class Game:
@@ -67,6 +68,7 @@ class Game:
 
         # Dibujar mapa
         self.map.draw(self.screen)
+        self.MUSICA= pygame.mixer.Sound(Assets.MUSICA_TRANCISION)
 
         # Dibujar bombas
         for bomb in self.bombs:

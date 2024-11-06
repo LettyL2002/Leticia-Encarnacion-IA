@@ -19,6 +19,7 @@ small_font = Constants.FUENTE_PEQUENA_MENU
 
 # sonido
 MUSICA= pygame.mixer.Sound(Assets.MUSICA_FONDO)
+MUSICA= pygame.mixer.Sound(Assets.SONIDO_BOTON)
 
 
 # Load and scale background image
