@@ -178,7 +178,7 @@ class Enemy:
             return False
 
         # Plantar una bomba
-        bomb = Bomb(self.grid_x, self.grid_y, self.tile_size)
+        Bomb = Bomb(self.grid_x, self.grid_y, self.tile_size)
         return True
 
     def set_target(self, player):
