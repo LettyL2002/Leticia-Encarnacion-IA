@@ -227,7 +227,7 @@ class Assets(object):
 
     # * Musica
     # ! fondo_completo.mp3 (Archivo corrupto)
-    MUSICA_FONDO: Path = Path("assets/sound/music/sound_long.mp3")
+    MUSICA_FONDO: Path = Path("assets/sound/music/fondo.mp3")
 
     # * Sonidos
     SONIDO_TRANCISION: Path = Path("assets/sound/effects/transición.wav")
