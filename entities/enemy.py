@@ -90,10 +90,10 @@ class Enemy:
         mover_patrulla = Accion(self.move_along_path)
         secuencia_patrulla.agregar_hijo(actualizar_patrulla)
         secuencia_patrulla.agregar_hijo(mover_patrulla)
-        
-        #sonido
+
+        # sonido
         var = pygame.mixer.Sound(Assets.SONIDO_ENEMIGO_ATAQUE)
-        var.play(atacar)
+        var.play()
 
     def update_rect_position(self):
         self.rect.x = self.x + 3
