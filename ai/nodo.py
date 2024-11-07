@@ -1,3 +1,5 @@
+# Leticia Encarnacion Lopez (22-SISN-2-008)
+
 class Nodo:
     def __init__(self, hijos=None):
         self.hijos = hijos if hijos is not None else []

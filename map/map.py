@@ -1,3 +1,4 @@
+# Leticia Encarnacion Lopez (22-SISN-2-008)
 # map.py
 import pygame
 import random

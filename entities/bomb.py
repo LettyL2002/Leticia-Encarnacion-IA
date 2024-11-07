@@ -1,3 +1,5 @@
+# Leticia Encarnacion Lopez (22-SISN-2-008)
+
 import pygame
 from utils.assets import Assets
 
