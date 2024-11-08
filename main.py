@@ -6,6 +6,7 @@ from scenes.menu_scene import main_menu
 
 def main():
     pygame.init()
+    pygame.joystick.init()
     main_menu()
 
 

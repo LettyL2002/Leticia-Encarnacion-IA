@@ -14,6 +14,13 @@ class Game:
         self.running = True
         self.clock = pygame.time.Clock()
 
+        pygame.joystick.init()
+        if pygame.joystick.get_count() > 0:
+            self.joystick = pygame.joystick.Joystick(0)
+            self.joystick.init()
+        else:
+            self.joystick = None
+
         # Crear el mapa
         self.map = Map()
 
@@ -48,11 +55,22 @@ class Game:
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     self.running = False
+            elif event.type == pygame.JOYBUTTONDOWN and self.joystick:
+                # Button 7 is usually "Start" on most controllers
+                # Button 6 is usually "Back" on most controllers
+                if event.button in [6, 7]:
+                    self.running = False
 
         # Procesar las teclas presionadas continuamente
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT] or keys[pygame.K_RIGHT] or keys[pygame.K_UP] or keys[pygame.K_DOWN]:
             self.player.move()
+
+        if self.joystick:
+            axis_x = self.joystick.get_axis(0)
+            axis_y = self.joystick.get_axis(1)
+            if abs(axis_x) > 0.1 or abs(axis_y) > 0.1:
+                self.player.move_with_joystick(axis_x, axis_y)
 
     def update(self):
         self.player.update()

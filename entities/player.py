@@ -221,3 +221,32 @@ class Player:
                 self.state = PlayerState.MOVING
 
         self.update_rect_position()
+
+    def move_with_joystick(self, axis_x, axis_y):
+        if not self.is_moving:
+            new_grid_x = self.grid_x
+            new_grid_y = self.grid_y
+
+            if axis_x < -0.1:
+                new_grid_x -= 1
+                self.direction = Direction.LEFT
+            elif axis_x > 0.1:
+                new_grid_x += 1
+                self.direction = Direction.RIGHT
+            if axis_y < -0.1:
+                new_grid_y -= 1
+                self.direction = Direction.BACK
+            elif axis_y > 0.1:
+                new_grid_y += 1
+                self.direction = Direction.FRONT
+
+            if (0 <= new_grid_x < self.map.grid_width and
+                0 <= new_grid_y < self.map.grid_height and
+                    self.map.is_walkable(new_grid_x, new_grid_y)):
+
+                self.target_x = new_grid_x * self.tile_size
+                self.target_y = new_grid_y * self.tile_size
+                self.is_moving = True
+                self.state = PlayerState.MOVING
+
+        self.update_rect_position()

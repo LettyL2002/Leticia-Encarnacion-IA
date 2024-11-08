@@ -19,6 +19,7 @@ pygame.display.set_caption(STRINGS.TITLE_VENTANA)
 pygame.font.init()
 font = Constants.FUENTE_PRINCIPAL_MENU
 small_font = Constants.FUENTE_PEQUENA_MENU
+axis_handled = False
 
 # sonido de fondo
 pygame.mixer.music.load(Assets.MUSICA_FONDO)
@@ -31,8 +32,18 @@ background_image = pygame.image.load(Assets.FONDO_MENU)
 background_image = pygame.transform.scale(
     background_image, (Constants.ANCHO_MENU, Constants.ALTO_MENU))
 
+# Initialize joystick
+pygame.joystick.init()
+if pygame.joystick.get_count() > 0:
+    joystick = pygame.joystick.Joystick(0)
+    joystick.init()
+
 # OPTIONS
 selected_option = 0
+
+# Add these variables near the other globals
+JOYSTICK_COOLDOWN = 200  # milliseconds
+last_joystick_movement = 0
 
 
 def draw_menu():
@@ -52,26 +63,50 @@ def draw_menu():
     pygame.display.flip()
 
 
-def handle_events():
-    global selected_option
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
-        elif event.type == pygame.KEYDOWN:
-            handle_keydown(event.key)
-
-
 def handle_keydown(key):
     global selected_option
     if key == pygame.K_UP:
         selected_option = (selected_option - 1) % len(STRINGS.MENU_OPCIONES)
-        SONIDO_BOTTOM.play()
     elif key == pygame.K_DOWN:
         selected_option = (selected_option + 1) % len(STRINGS.MENU_OPCIONES)
-        SONIDO_BOTTOM.play()
-    elif key == pygame.K_RETURN:
-        handle_selection()
+
+
+def handle_events():
+    global selected_option, last_joystick_movement
+    try:
+        current_time = pygame.time.get_ticks()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_UP:
+                    selected_option = (selected_option - 1) % len(STRINGS.MENU_OPCIONES)
+                    SONIDO_BOTTOM.play()
+                elif event.key == pygame.K_DOWN:
+                    selected_option = (selected_option + 1) % len(STRINGS.MENU_OPCIONES)
+                    SONIDO_BOTTOM.play()
+                elif event.key == pygame.K_RETURN:
+                    handle_selection()
+            elif event.type == pygame.JOYAXISMOTION and joystick:
+                if event.axis == 1:  # Vertical axis
+                    # Only process joystick input if enough time has passed
+                    if current_time - last_joystick_movement > JOYSTICK_COOLDOWN:
+                        if event.value < -0.5:
+                            selected_option = (selected_option - 1) % len(STRINGS.MENU_OPCIONES)
+                            SONIDO_BOTTOM.play()
+                            last_joystick_movement = current_time
+                        elif event.value > 0.5:
+                            selected_option = (selected_option + 1) % len(STRINGS.MENU_OPCIONES)
+                            SONIDO_BOTTOM.play()
+                            last_joystick_movement = current_time
+            elif event.type == pygame.JOYBUTTONDOWN and joystick:
+                if event.button == 0:  # A button
+                    handle_selection()
+
+    except Exception as e:
+        print(f"Error handling events: {e}")
+        pygame.event.clear()  # Clear event queue if there's an error
 
 
 def handle_selection():
@@ -86,7 +121,13 @@ def handle_selection():
 
 
 def main_menu():
+    global axis_handled
+    axis_handled = False
+    clock = pygame.time.Clock()
+    pygame.mixer.music.play(-1)
+    
     while True:
-        pygame.mixer.music.play(-1)
         handle_events()
         draw_menu()
+        clock.tick(60)  # Control frame rate
+        axis_handled = False
